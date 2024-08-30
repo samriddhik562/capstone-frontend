@@ -12,14 +12,17 @@ const HomePage = () => {
   const handleRegister = () => {
     navigate('/register'); // Navigate to the About page
   };
-    return (
-      <div>
+    return (<>
+      <div className="container">
         <h1>Home</h1>
           <button onClick={handleLogin}>Sign in</button> &nbsp;&nbsp;&nbsp;
           <button onClick={handleRegister}>Register</button>
-          <p>Welcome to <strong>SRVTech</strong> - your solutions to getting hired from the best!</p>
       </div>
-    );
+      <div>
+        <p>We are <strong>SRVTech</strong> - your solution to getting hired from the best!</p>
+      </div>
+      </>
+      );
   };
   
 export default HomePage;

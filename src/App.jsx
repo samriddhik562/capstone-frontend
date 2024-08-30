@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserManagement from './pages/UserManagement';
 import AdminPage from './pages/AdminPage';
+import './App.css'
 
 const App = () => {
   return (
