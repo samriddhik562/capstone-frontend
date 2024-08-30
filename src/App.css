@@ -5,23 +5,26 @@ body {
   justify-content: center;   /* Center content horizontally */
   align-items: center;       /* Center content vertically */
   height: 100vh;             /* Full viewport height */
+  background-color: #f8f8f8; /* Off-white background */
+  color: #003366;            /* Dark blue text */
 }
 
 .container {
   display: flex;
-  flex-direction: column;    /* Align children in a column (optional) */
+  flex-direction: column;    /* Align children in a column */
   align-items: center;       /* Center children horizontally */
   justify-content: center;   /* Center children vertically */
-  text-align: center;        /* Center text inside the container (optional) */
-  padding: 20px;             /* Optional: Add some padding */
+  text-align: center;        /* Center text inside the container */
+  padding: 20px;             /* Add some padding */
   border: 1px solid #ddd;    /* Optional: Add a border */
-  border-radius: 8px;        /* Optional: Round the corners */  
+  border-radius: 8px;        /* Optional: Round the corners */
+  background-color: #ffffff; /* White background for the container */
 }
 
 h1, h2 {
   font-size: 22px;
   margin-bottom: 20px;
-  color: #444;
+  color: #003366;            /* Dark blue text */
   text-align: center;
   font-weight: 600;
 }
@@ -32,9 +35,10 @@ input[type="text"], input[type="email"], input[type="password"] {
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* Light background for input fields */
   box-sizing: border-box;
   font-size: 14px;
+  color: #003366;            /* Dark blue text inside input fields */
 }
 
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
@@ -42,4 +46,15 @@ input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focu
   border-color: #aaa;
   background-color: #fff;
 }
+ul, ol {
+  list-style-position: inside; /* Ensure the bullets/numbers are inside the container */
+  margin: 0;                   /* Remove default margin */
+  padding: 0;                  /* Remove default padding */
+  text-align: left;            /* Left-align the text */
+  width: 100%;                 /* Ensure the list takes the full width of its container */
+}
 
+li {
+  padding: 5px 0;              /* Add spacing between list items */
+  color: #003366;              /* Ensure list item text is dark blue */
+}

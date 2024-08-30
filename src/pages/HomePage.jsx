@@ -13,8 +13,8 @@ const HomePage = () => {
     navigate('/register'); // Navigate to the About page
   };
     return (<>
+      <h1>Home</h1>
       <div className="container">
-        <h1>Home</h1>
           <button onClick={handleLogin}>Sign in</button> &nbsp;&nbsp;&nbsp;
           <button onClick={handleRegister}>Register</button>
       </div>

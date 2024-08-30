@@ -8,6 +8,8 @@ import RegisterPage from './pages/RegisterPage';
 import UserManagement from './pages/UserManagement';
 import AdminPage from './pages/AdminPage';
 import './App.css'
+import CandidatePage from './pages/CandidatePage';
+import ManagerPage from './pages/ManagerPage';
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/usermanagement" element={<UserManagement />} />
+        <Route path="/candidate" element={<CandidatePage />} />
+        <Route path="/manager" element={<ManagerPage />} />
       </Routes>
     </Router>
   );
