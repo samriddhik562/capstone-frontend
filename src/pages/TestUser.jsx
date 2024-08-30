@@ -11,10 +11,13 @@ const TestUser = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:8080/users');
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            const response = await fetch('http://localhost:8080/users', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                mode: 'cors',  // Ensure CORS mode is enabled
+            });
             const data = await response.json();
             setUsers(data);
         } catch (error) {
