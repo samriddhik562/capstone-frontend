@@ -41,7 +41,7 @@ const TestUser = () => {
             <ul>
                 {users.map((user) => (
                     <li key={user.id}>
-                        {user.name}
+                        {user.id} - {user.username} - {user.type}
                     </li>
                 ))}
             </ul>
