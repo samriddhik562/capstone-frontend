@@ -38,7 +38,7 @@ const TestUser = () => {
             <ul>
                 {users.map((user) => (
                     <li key={user.id}>
-                        {user.name} {user.username} - {user.password}
+                        {user.name}
                     </li>
                 ))}
             </ul>
