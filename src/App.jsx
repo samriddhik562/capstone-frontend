@@ -10,6 +10,7 @@ import AdminPage from './pages/AdminPage';
 import './App.css'
 import CandidatePage from './pages/CandidatePage';
 import ManagerPage from './pages/ManagerPage';
+import TestUser from './pages/TestUser';
 
 const App = () => {
   return (
@@ -20,7 +21,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/usermanagement" element={<UserManagement />} />
+        <Route path="/usermanagement" element={<TestUser />} />
         <Route path="/candidate" element={<CandidatePage />} />
         <Route path="/manager" element={<ManagerPage />} />
       </Routes>
