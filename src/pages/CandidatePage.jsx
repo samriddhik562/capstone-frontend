@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 export default function CandidatePage() {
     return (
       <div>
-        <h1> Admin Dashboard </h1>
+        <h1> Candidate Dashboard </h1>
           <div className="container">
           <p>Welcome to Candidate Dashboard!</p>
           <p>Please click on the links below to perform the task you want:</p>
