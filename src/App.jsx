@@ -1,13 +1,18 @@
-import './App.css'
-import Home from './components/Home'
-function App() {
-  return (
-    <>
-      <div>
-        <Home/>
-      </div>
-    </>
-  )
-}
+/* eslint-disable no-unused-vars */
+// App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
 
-export default App
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
