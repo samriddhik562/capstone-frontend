@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { UserList } from "../components/UserList";
 import { UpdateUser } from "../components/UpdateUser";
 import './UserManagement.css'; 
-import * as userCrud from "../UserServer.js"; // Import all CRUD functions
+import * as userCrud from "../Server.js"; // Import all CRUD functions
 
 const emptyUser = {
   id: -1,
