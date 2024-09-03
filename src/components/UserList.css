@@ -1,0 +1,74 @@
+/* UserList.css */
+
+.userDiv {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Table container for fixed header and scrollable body */
+.table-container {
+    max-height: 400px; /* Adjust height as needed */
+    overflow: hidden; /* Hide overflow in the container */
+}
+
+.table-header {
+    overflow: hidden;
+    background-color: #007bff; /* Blue background for header */
+    color: #fff; /* White text color */
+}
+
+.table-header table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header th {
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.table-body {
+    max-height: 300px; /* Adjust height as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.table-body table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table rows */
+.table-body tbody tr {
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease;
+}
+
+.table-body tbody tr:hover {
+    background-color: #f1f1f1; /* Light grey background on hover */
+}
+
+/* Table cells */
+.table-body td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .userDiv {
+        padding: 10px;
+    }
+
+    .table-header th, .table-body td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}

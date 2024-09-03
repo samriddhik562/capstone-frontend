@@ -1,0 +1,74 @@
+/* Container for the form */
+.update-user-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
+
+/* Heading */
+.update-user-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Form elements */
+.update-user-container form div {
+    margin-bottom: 15px;
+}
+
+/* Labels */
+.update-user-container label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Input fields */
+.update-user-container input[type="text"],
+.update-user-container input[type="password"],
+.update-user-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Select dropdown */
+.update-user-container select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* Buttons container */
+.update-user-container .button-group {
+    margin-top: 20px;
+}
+
+/* Buttons */
+.update-user-container button {
+    background-color: #6c757d; /* Dark grey background */
+    color: rgba(255, 255, 255, 0.995);
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for buttons */
+.update-user-container button:hover {
+    background-color: #5a6268; /* Slightly darker grey */
+}

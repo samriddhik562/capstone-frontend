@@ -1,79 +1,136 @@
-import { useState } from "react";
-import { TalentList } from "../components/TalentList";
-import { UpdateTalent } from "../components/UpdateTalent";
+import React, { useState, useEffect } from "react";
+import { UserList } from "../components/UserList";
+import { UpdateUser } from "../components/UpdateUser";
+import './UserManagement.css'; 
+import * as userCrud from "../UserServer.js"; // Import all CRUD functions
 
-export default function UserManagementPage() {
-    const text = `
-    This "Administrator's Dashboard" page needs to be developed!
-  
-    This page should include:
-    - Link to the "User Management Page" to manage login accounts 
-    - Links to similar CRUD pages for direct editing of database table contents
-    - List of application tables and rowcounts
-    `;
-    return (
-      <div>
-          <h1>User Management</h1>
-      </div>
-    )
-}
+const emptyUser = {
+  id: -1,
+  username: "",
+  password: "",
+  type: ""
+};
 
-const emptyUser =  {
-  "id": -1,
-  "user_id": "",
-  "job_id": "",
-  "date_applied": "",
-  "cover_letter": "",
-  "custom_resume": "",
-  "application_status": ""
-}
+const UserManagement = () => {
+  const [selectedUser, setSelectedUser] = useState(emptyUser);
+  const [users, setUsers] = useState([]);
+  const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(false);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-export const UserManagement= props => {
-       const [selectedTalent, setSelectedTalent] = useState(emptyTalent);
-    function talentClick(talent) {
-        if (!(JSON.stringify(talent) === JSON.stringify(selectedTalent))) {
-            setHidden(false);
-            setSelectedTalent(talent);
+  useEffect(() => {
+    pullAllUsers();
+  }, []);
+
+  useEffect(() => {
+    filterUsers();
+  }, [searchQuery, users]);
+
+  const userClick = (user) => {
+    setSelectedUser(user);
+  };
+
+  const clearClick = () => {
+    setSelectedUser(emptyUser);
+  };
+
+  const destroyUser = () => {
+    if (selectedUser.id !== -1) {
+      userCrud.deleteUser(selectedUser.id, (err) => {
+        if (err) {
+          setError('Error deleting user.');
+          console.error(err);
         } else {
-            setSelectedTalent(emptyTalent);
+          setSelectedUser(emptyUser);
+          pullAllUsers(); 
         }
+      });
     }
-    function clearClick(clear) {
-        setHidden(true)
-    }
-    function deleteTalent() {
-        if (selectedTalent.id !== -1) {
-            memdb.deleteById(selectedTalent.id);
-            setSelectedTalent(emptyTalent);
-            return true;
-        } else {
-            return false;
-        }
-    }
-    function saveTalent(talent) {
-        memdb.put(talent.id, talent);
-        setSelectedTalent(emptyTalent);
-    }
-    function addTalent(talent) {
-        memdb.post(talent);
-        setSelectedTalent(emptyTalent);
-    }
-    return (
-        <>
-            <h2>Talent List</h2>
-            <TalentList talents={props.talents} onTalentClick={talentClick}/>
-            {
-                (hidden) ? <></> : (
-                <UpdateTalent 
-                    talent={selectedTalent} 
-                    onClearClick={clearClick}
-                    onDeleteClick={deleteTalent}
-                    setTalent={setSelectedTalent}
-                    onAddClick={addTalent}
-                    onSaveClick={saveTalent}
-                />)
-            } 
-        </>
+  };
+
+  const saveUser = (user) => {
+    userCrud.updateUser(user.id, user.username, user.password, user.type, (err, result) => {
+      if (err) {
+        setError('Error updating user.');
+        console.error(err);
+      } else {
+        setSelectedUser(emptyUser);
+        pullAllUsers(); 
+      }
+    });
+  };
+
+  const addUser = (user) => {
+    userCrud.createUser(user.username, user.password, user.type, (err) => {
+      if (err) {
+        setError('Error creating user.');
+        console.error(err);
+      } else {
+        setSelectedUser(emptyUser);
+        pullAllUsers(); 
+      }
+    });
+  };
+
+  const pullAllUsers = () => {
+    setLoading(true);
+    userCrud.getUsers((err, fetchedUsers) => {
+      setLoading(false);
+      if (err) {
+        setError('Database Error');
+        console.error(err);
+      } else {
+        setUsers(fetchedUsers);
+      }
+    });
+  };
+
+  const filterUsers = () => {
+    const query = searchQuery.toLowerCase();
+    const filtered = users.filter(user =>
+      (user.username || "").toLowerCase().includes(query) ||
+      (user.type || "").toLowerCase().includes(query)
     );
-}
+    setFilteredUsers(filtered);
+  };
 
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  return (
+    <div className="user-management-container">
+      <div className="user-management-header">
+        <h1>User Management</h1>
+      </div>
+      {error && <p className="error">{error}</p>}
+      <div className="search-bar">
+        <input
+         type="text"
+         placeholder="Search Users..."
+         value={searchQuery}
+         onChange={handleSearchChange}
+         />
+      </div>
+      {loading && <p className="loading">Loading...</p>}
+      <div className="main-content">
+        <div className="update-form-container">
+          <UpdateUser 
+            user={selectedUser} 
+            onClearClick={clearClick}
+            onDeleteClick={destroyUser}
+            setUser={setSelectedUser}
+            onAddClick={addUser}
+            onSaveClick={saveUser}
+          />
+        </div>
+        <div className="user-list-container">
+          <UserList users={filteredUsers} onUserClick={userClick} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default UserManagement;
