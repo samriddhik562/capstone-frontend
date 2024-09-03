@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const UserApi = 'http://localhost:8080/users';
-const JobsApi = 'http://localhost:8080/jobs'
+const JobsApi = 'http://localhost:8080/jobs';
 
 // Fetch all users
 export const getUsers = (callback) => {
@@ -31,6 +31,13 @@ export const createUser = (username, type, callback) => {
         .catch(error => callback(error));
 };
 
+// Register a new user
+export const registerUser = ({username, password, type, callback}) => {
+    // axios.post(UserApi, { username, password, type })
+    //     .then(response => callback(null, response.data))
+    //     .catch(error => callback(error));
+    fetch(UserApi, {method:"POST", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, )
+};
 // Fetch all jobs
 export const getJobs = (callback) => {
     axios.get(JobsApi)
