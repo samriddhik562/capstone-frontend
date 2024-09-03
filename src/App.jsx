@@ -10,13 +10,17 @@ import AdminPage from './pages/AdminPage';
 import './App.css'
 import CandidatePage from './pages/CandidatePage';
 import ManagerPage from './pages/ManagerPage';
+import HeaderComponent from './components/HeaderComponent';
+import AboutUs from './pages/AboutUs';
 
 const App = () => {
   return (
     <Router>
+      <HeaderComponent />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/admin" element={<AdminPage />} />
