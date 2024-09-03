@@ -20,9 +20,13 @@ const RegisterPage = () => {
         try {
             console.log(newUser)
             userCrud.registerUser(newUser);
-            navigate('/home')
+            if(newUser.type === "Candidate")
+                navigate('/candidate')
+            else
+                navigate('/manager')
             // Handle success (e.g., show a message or redirect)
-        } catch (error) {
+        } 
+        catch (error) {
             console.error('Registration failed:', error);
             // Handle error (e.g., show an error message)
         }
