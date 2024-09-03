@@ -50,7 +50,7 @@ const UserManagement = () => {
   };
 
   const saveUser = (user) => {
-    userCrud.updateUser(user.id, user.username, user.password, user.type, (err, result) => {
+    userCrud.updateUser(user.id, user.username, user.type, (err, result) => {
       if (err) {
         setError('Error updating user.');
         console.error(err);
@@ -62,7 +62,7 @@ const UserManagement = () => {
   };
 
   const addUser = (user) => {
-    userCrud.createUser(user.username, user.password, user.type, (err) => {
+    userCrud.createUser(user.username, user.type, (err) => {
       if (err) {
         setError('Error creating user.');
         console.error(err);

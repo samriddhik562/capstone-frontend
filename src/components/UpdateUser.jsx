@@ -46,15 +46,6 @@ export const UpdateUser = ({ user, onSaveClick, onDeleteClick, onClearClick, onA
                     />
                 </div>
                 <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        onChange={handleInputChange}
-                        value={user.password || ''}
-                    />
-                </div>
-                <div>
                     <label htmlFor="dropdown">Type:</label>
                     <select
                         id="dropdown"
