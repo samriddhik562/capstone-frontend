@@ -15,8 +15,8 @@ const HomePage = () => {
     return (<>
       <h1>Home</h1>
       <div className="container">
-          <button onClick={handleLogin}>Sign in</button> &nbsp;&nbsp;&nbsp;
-          <button onClick={handleRegister}>Register</button>
+          <button className="button" onClick={handleLogin}>Sign in</button> &nbsp;&nbsp;&nbsp;
+          <button className="button" onClick={handleRegister}>Register</button>
       </div>
       <div>
         <p>We are <strong>SRVTech</strong> - your solution to getting hired from the best!</p>

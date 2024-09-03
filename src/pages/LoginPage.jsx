@@ -9,7 +9,7 @@ const LoginPage = () =>{
         <label htmlFor="password">Password:</label>
         <input type="password" />
     <br />
-        <button type="submit">Login</button>
+        <button className="button" type="submit">Login</button>
     </form>
     </div>
     )
