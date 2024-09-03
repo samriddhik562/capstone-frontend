@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const UserApi = 'http://localhost:8080/users';
+const JobsApi = 'http://localhost:8080/jobs'
 
 // Fetch all users
 export const getUsers = (callback) => {
@@ -17,15 +18,22 @@ export const deleteUser = (id, callback) => {
 };
 
 // Update a user by ID
-export const updateUser = (id, username, password, type, callback) => {
-    axios.put(`${UserApi}/${id}`, { username, password, type })
+export const updateUser = (id, username, type, callback) => {
+    axios.put(`${UserApi}/${id}`, { username, type })
         .then(response => callback(null, response.data))
         .catch(error => callback(error));
 };
 
 // Create a new user
-export const createUser = (username, password, type, callback) => {
-    axios.post(UserApi, { username, password, type })
+export const createUser = (username, type, callback) => {
+    axios.post(UserApi, { username, type })
+        .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
+// Fetch all jobs
+export const getJobs = (callback) => {
+    axios.get(JobsApi)
         .then(response => callback(null, response.data))
         .catch(error => callback(error));
 };

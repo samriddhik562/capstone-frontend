@@ -12,7 +12,7 @@ const RegisterPage = () =>{
         <label htmlFor="password">Password:</label>
         <input type="password" />
     <br />
-        <button type="submit">Register</button>
+        <button className="button" type="submit">Register</button>
     </form>
     </div>
     )

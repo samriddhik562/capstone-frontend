@@ -24,7 +24,7 @@ const LoginPage = () =>{
             value={user.password || ''}
         />
     <br />
-        <button type="submit">Login</button>
+        <button className="button" type="submit">Login</button>
     </form>
     </div>
     )

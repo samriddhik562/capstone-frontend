@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { UserList } from "../components/UserList";
 import { UpdateUser } from "../components/UpdateUser";
 import './UserManagement.css'; 
-import * as userCrud from "../UserServer.js"; // Import all CRUD functions
+import * as userCrud from "../Server.js"; // Import all CRUD functions
 
 const emptyUser = {
   id: -1,
@@ -50,7 +50,7 @@ const UserManagement = () => {
   };
 
   const saveUser = (user) => {
-    userCrud.updateUser(user.id, user.username, user.password, user.type, (err, result) => {
+    userCrud.updateUser(user.id, user.username, user.type, (err, result) => {
       if (err) {
         setError('Error updating user.');
         console.error(err);
@@ -62,7 +62,7 @@ const UserManagement = () => {
   };
 
   const addUser = (user) => {
-    userCrud.createUser(user.username, user.password, user.type, (err) => {
+    userCrud.createUser(user.username, user.type, (err) => {
       if (err) {
         setError('Error creating user.');
         console.error(err);
