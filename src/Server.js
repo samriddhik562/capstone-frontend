@@ -26,10 +26,17 @@ export const updateCandidate = (id, data, callback) => {
         .catch(error => callback(error));
 };
 
-// Fetch all users
-export const getManagers = (callback) => {
-    axios.get(ManagerApi)
+// Fetch Manager Data
+export const getManager = (id, callback) => {
+    axios.get(`${ManagerApi}/${id}`)
         .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
+//Edit Candidate
+export const updateManager = (id, data, callback) => {
+    axios.put(`${ManagerApi}/${id}`, data)
+        .then(() => callback(null))
         .catch(error => callback(error));
 };
 
