@@ -28,11 +28,22 @@ const CandidateProfile = () => {
         }));
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevent the default form submission
+        API.updateCandidate(1, candidate, (err) => {
+            if (err) {
+                console.error('Failed to update candidate:', err);
+            } else {
+                console.log('Candidate updated successfully');
+            }
+        });
+    };
+
     return (
         <>
             <h1>Candidate Profile</h1>
             <div className='container'>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="fullName">Full Name:</label>
                     <input
                         type="text"

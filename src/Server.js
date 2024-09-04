@@ -19,6 +19,13 @@ export const getCandidate = (id, callback) => {
         .catch(error => callback(error));
 };
 
+//Edit Candidate
+export const updateCandidate = (id, data, callback) => {
+    axios.put(`${CandidateApi}/${id}`, data)
+        .then(() => callback(null))
+        .catch(error => callback(error));
+};
+
 // Fetch all users
 export const getManagers = (callback) => {
     axios.get(ManagerApi)
