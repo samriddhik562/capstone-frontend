@@ -15,7 +15,14 @@ export const getUsers = (callback) => {
 // Fetch Candidate data
 export const getCandidate = (id, callback) => {
     axios.get(`${CandidateApi}/${id}`)
-        .then(response => callback(null, response.data))
+        .then(response => Candidatecallback(null, response.data))
+        .catch(error => callback(error));
+};
+
+//Edit Candidate
+export const updateCandidate = (id, data, callback) => {
+    axios.put(`${CandidateApi}/${id}`, data)
+        .then(() => callback(null))
         .catch(error => callback(error));
 };
 
