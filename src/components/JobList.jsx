@@ -17,7 +17,7 @@ export const JobList = ({ jobs, onJobsClick }) => {
                     <table>
                         <thead>
                             <tr>
-                                <th>Jobname</th>
+                                <th>Jobs</th>
                                 <th>&nbsp;</th>
                                 <th>Type</th>
                             </tr>
@@ -35,7 +35,9 @@ export const JobList = ({ jobs, onJobsClick }) => {
                                 >
                                     <td>{job.jobname}</td>
                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td>{job.type}</td>
+                                    <td className="Job-Description">
+                                        {job.description}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
