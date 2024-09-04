@@ -8,7 +8,7 @@ body, ul {
 /* Navigation bar styles */
 .navbar {
     background-color: #333;
-    padding: 10px;
+    padding: 5px;
     width: 100%;
     position: absolute; /* Ensures it stretches across the page */
     left: 0; /* Aligns it to the left edge */

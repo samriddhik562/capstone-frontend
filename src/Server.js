@@ -1,11 +1,27 @@
 import axios from 'axios';
 
 const UserApi = 'http://localhost:8080/users';
+const CandidateApi = 'http://localhost:8080/candidates';
+const ManagerApi = 'http://localhost:8080/managers';
 const JobsApi = 'http://localhost:8080/jobs';
 
 // Fetch all users
 export const getUsers = (callback) => {
     axios.get(UserApi)
+        .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
+// Fetch all Candidates
+export const getCandidates = (callback) => {
+    axios.get(CandidateApi)
+        .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
+// Fetch all users
+export const getManagers = (callback) => {
+    axios.get(ManagerApi)
         .then(response => callback(null, response.data))
         .catch(error => callback(error));
 };
@@ -37,11 +53,11 @@ export const registerUser = ({username, password, type, callback}) => {
     //     .then(response => callback(null, response.data))
     //     .catch(error => callback(error));
     fetch(UserApi, {method:"POST", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, )
+    if (type === "Candidate"){
+        fetch(CandidateApi, {method:"POST", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, )
+    }
+    else
+    {
+        fetch(ManagerApi, {method:"POST", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, )
+    }
 };
-// Fetch all jobs
-export const getJobs = (callback) => {
-    axios.get(JobsApi)
-        .then(response => callback(null, response.data))
-        .catch(error => callback(error));
-};
-

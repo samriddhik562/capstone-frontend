@@ -13,11 +13,12 @@ import ManagerPage from './pages/ManagerPage';
 import HeaderComponent from './components/HeaderComponent';
 import AboutUs from './pages/AboutUs';
 import JobsListing from './pages/JobsListing'
+import CandidateProfile from './pages/CandidateProfile';
 
 const App = () => {
   return (
     <Router>
-      <HeaderComponent />
+      <HeaderComponent position="static"/>
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/usermanagement" element={<UserManagement />} />
         <Route path="/candidate" element={<CandidatePage />} />
+        <Route path="/editcprofile" element={<CandidateProfile />} />
         <Route path="/manager" element={<ManagerPage />} />
       </Routes>
     </Router>

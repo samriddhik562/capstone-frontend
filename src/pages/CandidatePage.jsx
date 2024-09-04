@@ -8,7 +8,8 @@ export default function CandidatePage() {
           <p>Welcome to Candidate Dashboard!</p>
           <p>Please click on the links below to perform the task you want:</p>
           <br/><ul>
-          <li><Link to={'/applyjob'} >Apply to Job</Link><br/></li>
+          <li><Link to={'/editcprofile'} >Edit Profile</Link><br/></li>
+          <li><Link to={'/jobs'} >Apply to Job</Link><br/></li>
           <li><Link to={'/manageapplication'}>Manage Application</Link><br/></li>
           </ul></div>
       </div>
