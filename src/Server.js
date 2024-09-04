@@ -12,9 +12,9 @@ export const getUsers = (callback) => {
         .catch(error => callback(error));
 };
 
-// Fetch all Candidates
-export const getCandidates = (callback) => {
-    axios.get(CandidateApi)
+// Fetch Candidate data
+export const getCandidate = (id, callback) => {
+    axios.get(`${CandidateApi}/${id}`)
         .then(response => callback(null, response.data))
         .catch(error => callback(error));
 };
