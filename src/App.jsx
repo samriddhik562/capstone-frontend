@@ -14,6 +14,7 @@ import HeaderComponent from './components/HeaderComponent';
 import AboutUs from './pages/AboutUs';
 import JobsListing from './pages/JobsListing'
 import CandidateProfile from './pages/CandidateProfile';
+import ManagerProfile from './pages/ManagerProfile';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="/candidate" element={<CandidatePage />} />
         <Route path="/editcprofile" element={<CandidateProfile />} />
         <Route path="/manager" element={<ManagerPage />} />
+        <Route path="/editmprofile" element={<ManagerProfile />} />
       </Routes>
     </Router>
   );

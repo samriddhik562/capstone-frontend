@@ -1,6 +1,6 @@
-const CandidateProfile = () =>{
+const ManagerProfile = () =>{
     return(<>
-    <h1>Candidate Profile</h1>
+    <h1>Manager Profile</h1>
     <div className='container'>
     <form>
         <label htmlFor="full_name">Full Name:</label>
@@ -9,19 +9,16 @@ const CandidateProfile = () =>{
         <label htmlFor="email">Email:</label>
         <input type="text" />
     <br/>
-        <label htmlFor="address">Address:</label>
+        <label htmlFor="department">Department:</label>
         <input type="text" />
     <br/>
         <label htmlFor="phone">Phone:</label>
         <input type="text" />
     <br/>
-        <label htmlFor="resume">Resume:</label>
-        <input type="text" />
-    <br />
         <button className="button" type="submit">Submit Changes</button>
     </form>
     </div></>
     )
 }
 
-export default CandidateProfile;
+export default ManagerProfile;
