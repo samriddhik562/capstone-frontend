@@ -8,6 +8,7 @@ export default function ManagerPage() {
           <p>Welcome to Manager Dashboard!</p>
           <p>Please click on the links below to perform the task you want:</p>
           <br/><ul>
+          <li><Link to={'/editmprofile'}>Edit Profile</Link><br/></li> 
           <li><Link to={'/managejob'}>Manage Job Openings</Link><br/></li>
           </ul></div>
       </div>
