@@ -12,7 +12,7 @@ import CandidatePage from './pages/CandidatePage';
 import ManagerPage from './pages/ManagerPage';
 import HeaderComponent from './components/HeaderComponent';
 import AboutUs from './pages/AboutUs';
-import JobsListing from './pages/JobsListing'
+import JobsListingPage from './pages/JobsListingPage'
 import CandidateProfile from './pages/CandidateProfile';
 import ManagerProfile from './pages/ManagerProfile';
 
@@ -24,7 +24,7 @@ const App = () => {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/jobs" element={<JobsListing />} />
+        <Route path="/jobs" element={<JobsListingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/admin" element={<AdminPage />} />
