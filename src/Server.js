@@ -48,16 +48,19 @@ export const createUser = (username, type, callback) => {
 };
 
 // Register a new user
-export const registerUser = ({username, password, type, callback}) => {
+export const registerUser = async ({id, username, password, type, callback}) => {
     // axios.post(UserApi, { username, password, type })
     //     .then(response => callback(null, response.data))
     //     .catch(error => callback(error));
-    fetch(UserApi, {method:"POST", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, )
-    if (type === "Candidate"){
-        fetch(CandidateApi, {method:"POST", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, )
+    const newUser = await fetch(UserApi, {method:"POST", mode: "cors", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, ).then((res) => res.json())
+    console.log({newUser})
+    if (newUser.type === "Candidate"){
+        fetch(CandidateApi, {method:"POST", mode: "cors", body:JSON.stringify({userId: newUser.id}), headers: {"Content-Type":"application/json"}}, )
+        console.log("successful candidate")
     }
     else
     {
-        fetch(ManagerApi, {method:"POST", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, )
+        fetch(ManagerApi, {method:"POST", mode: "cors", body:JSON.stringify({userId: newUser.id}), headers: {"Content-Type":"application/json"}}, )
+        console.log("successful manager")
     }
 };
