@@ -5,7 +5,7 @@ const CandidateApi = 'http://localhost:8080/candidates';
 const ManagerApi = 'http://localhost:8080/managers';
 const JobsApi = 'http://localhost:8080/jobs';
 
-// Fetch all users
+// Fetch all Users
 export const getUsers = (callback) => {
     axios.get(UserApi)
         .then(response => callback(null, response.data))
@@ -19,9 +19,16 @@ export const getCandidates = (callback) => {
         .catch(error => callback(error));
 };
 
-// Fetch all users
+// Fetch all Managers
 export const getManagers = (callback) => {
     axios.get(ManagerApi)
+        .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
+// Fetch all Jobs
+export const getJobs = (callback) => {
+    axios.get(JobsApi)
         .then(response => callback(null, response.data))
         .catch(error => callback(error));
 };
@@ -29,6 +36,13 @@ export const getManagers = (callback) => {
 // Delete a user by ID
 export const deleteUser = (id, callback) => {
     axios.delete(`${UserApi}/${id}`)
+        .then(() => callback(null))
+        .catch(error => callback(error));
+};
+
+// Delete a Job by ID
+export const deleteJob = (id, callback) => {
+    axios.delete(`${JobsApi}/${id}`)
         .then(() => callback(null))
         .catch(error => callback(error));
 };
