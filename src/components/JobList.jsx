@@ -1,7 +1,7 @@
 import React,{ useRef, useState } from 'react';
 import './JobList.css';
 
-export const JobList = ({ jobs, onJobsClick }) => {
+export const JobList = ({ jobs, onJobClick }) => {
     const jobRef = useRef(null);
     const scrollToJob = () => {
         if (jobRef.current) {
