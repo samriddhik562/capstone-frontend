@@ -38,13 +38,13 @@ return (
     <>
     <h1>Manager Profile</h1>
     <div className='container'>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}><div className="row"><div className="group">
         <label htmlFor="fullName">Full Name:</label>
         <input type="text" name="fullName" value={manager.fullName || ''} onChange={handleChange}/>
-    <br />
+    <br /></div><div className="group">
         <label htmlFor="email">Email:</label>
         <input type="text" name="email" value={manager.email || ''} onChange={handleChange}/>
-    <br />
+    <br /></div></div>
         <label htmlFor="department">Department:</label>
         <input type="text" name="department" value={manager.department || ''} onChange={handleChange}/>
     <br />

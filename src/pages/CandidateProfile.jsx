@@ -47,6 +47,7 @@ const CandidateProfile = () => {
             <h1>Candidate Profile</h1>
             <div className='container'>
                 <form onSubmit={handleSubmit}>
+                <div className="row"><div className="group">
                     <label htmlFor="fullName">Full Name:</label>
                     <input
                         type="text"
@@ -54,7 +55,7 @@ const CandidateProfile = () => {
                         value={candidate.fullName || ''}
                         onChange={handleChange}
                     />
-                    <br />
+                    <br /></div><div className="group">
                     <label htmlFor="email">Email:</label>
                     <input
                         type="text"
@@ -62,7 +63,7 @@ const CandidateProfile = () => {
                         value={candidate.email || ''}
                         onChange={handleChange}
                     />
-                    <br />
+                    <br /></div></div>
                     <label htmlFor="address">Address:</label>
                     <input
                         type="text"

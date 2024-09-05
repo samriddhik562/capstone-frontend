@@ -1,15 +1,18 @@
-import React,{ useRef } from 'react';
+import React,{ useRef, useState } from 'react';
 import './JobList.css';
 
 export const JobList = ({ jobs, onJobsClick }) => {
     const jobRef = useRef(null);
-
     const scrollToJob = () => {
         if (jobRef.current) {
             jobRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
-
+    const [selectJob, setSelectedJob] = useState([]);
+    const onJobClick = (job) => {
+        setSelectedJob(job);
+        console.log(job.id);
+    };
     return (
         <div className="jobDiv">
             <div className="table-container">

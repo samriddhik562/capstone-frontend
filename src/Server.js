@@ -40,6 +40,13 @@ export const getJobs = (callback) => {
         .catch(error => callback(error));
 };
 
+// Fetch Jobs under Specific Manager
+export const getJobsFiltered = (id, callback) => {
+    axios.get(`${ManagerApi}/jobs/${id}`)
+        .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
 // Fetch Job from ID
 export const getJob = (id, callback) => {
     axios.get(`${JobsApi}/${id}`)
