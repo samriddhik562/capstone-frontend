@@ -2,7 +2,7 @@ import React from 'react';
 import './JobDescription.css'
 
 export const JobDescription = ({ job, onApplyClick, onWithdrawClick, application, user }) => {
-    if (!job) {
+    if (!job || job.id) {
         return <div>Select a job to see the details</div>;
     }
 
