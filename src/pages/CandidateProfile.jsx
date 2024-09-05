@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import * as API from '../Server.js'; // Adjust the import according to your project structure
+import * as API from '../Server.js';
+import {useNavigate} from 'react-router-dom';
 
 const CandidateProfile = () => {
     const [candidate, setCandidate] = useState({});
+    const navigate = useNavigate();
 
     // Fetch candidate data when the component mounts
     useEffect(() => {
@@ -35,6 +37,7 @@ const CandidateProfile = () => {
                 console.error('Failed to update candidate:', err);
             } else {
                 console.log('Candidate updated successfully');
+                navigate('/candidate')
             }
         });
     };
