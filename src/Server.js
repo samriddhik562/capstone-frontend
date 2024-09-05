@@ -33,10 +33,43 @@ export const getManager = (id, callback) => {
         .catch(error => callback(error));
 };
 
-//Edit Candidate
+// Fetch All Job Data
+export const getJobs = (callback) => {
+    axios.get(JobsApi)
+        .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
+// Fetch Job from ID
+export const getJob = (id, callback) => {
+    axios.get(`${JobsApi}/${id}`)
+        .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
+//Edit Manager
 export const updateManager = (id, data, callback) => {
     axios.put(`${ManagerApi}/${id}`, data)
         .then(() => callback(null))
+        .catch(error => callback(error));
+};
+
+export const updateJob = (id, data, callback) => {
+    if (typeof callback !== 'function') {
+        throw new TypeError('Callback must be a function');
+    }
+    axios.put(`${JobsApi}/${id}`, data)
+        .then(() => callback(null))
+        .catch(error => callback(error));
+};
+
+// Create a new Job
+export const createJob = (managerId, data, callback) => {
+    if (typeof callback !== 'function') {
+        throw new TypeError('Callback must be a function');
+    }
+    axios.post(JobsApi, { managerId, ...data })
+        .then(response => callback(null, response.data))
         .catch(error => callback(error));
 };
 
@@ -70,9 +103,6 @@ export const createUser = (username, type, callback) => {
 
 // Register a new user
 export const registerUser = async ({id, username, password, type, callback}) => {
-    // axios.post(UserApi, { username, password, type })
-    //     .then(response => callback(null, response.data))
-    //     .catch(error => callback(error));
     const newUser = await fetch(UserApi, {method:"POST", mode: "cors", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, ).then((res) => res.json())
     console.log({newUser})
     if (newUser.type === "Candidate"){
