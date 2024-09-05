@@ -11,7 +11,7 @@ export default function ManagerJobs() {
 
   useEffect(() => {
     const pullJobs = () => {
-        API.getJobsFiltered(52, (err, data) => {
+        API.getJobsFiltered(2, (err, data) => {
           if (err) { 
             setError('Fetching error');
             console.error(err);
@@ -29,6 +29,7 @@ export default function ManagerJobs() {
          <div className="Job-List-Container">
           <JobList jobs={jobs} onJobClick={jobClick} />
          </div>
+         <a href="http://localhost:5173/managejobs/1"><button>Update Job</button></a> <a href="http://localhost:5173/managejobs/new"><button>Add Job</button></a>
          </div>
         </div> 
     )
