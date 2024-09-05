@@ -33,6 +33,13 @@ export const getManager = (id, callback) => {
         .catch(error => callback(error));
 };
 
+// Fetch Job Data
+export const getJobs = (callback) => {
+    axios.get(JobsApi)
+        .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
 //Edit Candidate
 export const updateManager = (id, data, callback) => {
     axios.put(`${ManagerApi}/${id}`, data)
@@ -63,9 +70,6 @@ export const createUser = (username, type, callback) => {
 
 // Register a new user
 export const registerUser = async ({id, username, password, type, callback}) => {
-    // axios.post(UserApi, { username, password, type })
-    //     .then(response => callback(null, response.data))
-    //     .catch(error => callback(error));
     const newUser = await fetch(UserApi, {method:"POST", mode: "cors", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, ).then((res) => res.json())
     console.log({newUser})
     if (newUser.type === "Candidate"){

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React,{ useRef } from 'react';
 //import './JobList.css';
 
 export const JobList = ({ jobs, onJobsClick }) => {
@@ -33,9 +33,9 @@ export const JobList = ({ jobs, onJobsClick }) => {
                                     onClick={() => onJobClick(job)}
                                     ref={index === 0 ? jobRef : null}
                                 >
-                                    <td>{job.jobname}</td>
+                                    <td>{job.title}</td>
                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td>{job.type}</td>
+                                    <td>{job.listingStatus}</td>
                                 </tr>
                             ))}
                         </tbody>

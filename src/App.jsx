@@ -15,6 +15,7 @@ import AboutUs from './pages/AboutUs';
 import JobsListingPage from './pages/JobsListingPage'
 import CandidateProfile from './pages/CandidateProfile';
 import ManagerProfile from './pages/ManagerProfile';
+import ManageJobs from './pages/ManageJobs';
 
 const App = () => {
   return (
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/editcprofile" element={<CandidateProfile />} />
         <Route path="/manager" element={<ManagerPage />} />
         <Route path="/editmprofile" element={<ManagerProfile />} />
+        <Route path="/managejobs" element={<ManageJobs/>}/>
       </Routes>
     </Router>
   );

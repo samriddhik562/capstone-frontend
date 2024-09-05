@@ -1,5 +1,7 @@
 body {
   background-image: url('https://i0.wp.com/backgroundabstract.com/wp-content/uploads/edd/2022/01/gradient-dynamic-blue-lines-background_23-2148995756-e1656080867962.jpg?w=626&ssl=1'); /* Replace with your image URL */
+  background-repeat: repeat; /* Ensures the image repeats both vertically and horizontally */
+  background-attachment: scroll; 
   margin: 0;
   padding: 0;
   display: flex;
@@ -75,4 +77,24 @@ li {
   cursor: pointer;
   font-size: 1rem;
   margin: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  gap: 20px; /* Space between fields */
+  margin-bottom: 20px;
+}
+
+.form-group {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
 }

@@ -9,7 +9,7 @@ const navigate = useNavigate();
 
 useEffect(() => {
     const pullManager = () => {
-        API.getManager(1, (err, data) => {
+        API.getManager(2, (err, data) => {
         if (err) {
         console.error('Failed to fetch manager:', err);
         } else {
@@ -26,7 +26,7 @@ const handleChange = (e) => {
 
 const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission
-    API.updateManager(1, manager, (err) => {
+    API.updateManager(2, manager, (err) => {
     if (err) {
     console.error('Failed to update manager:', err);
     } else {
@@ -48,8 +48,8 @@ return (
         <label htmlFor="department">Department:</label>
         <input type="text" name="department" value={manager.department || ''} onChange={handleChange}/>
     <br />
-        <label htmlFor="phoneNum">Phone:</label>
-        <input type="text" name="phoneNum" value={manager.phoneNum || ''} onChange={handleChange}/>
+        <label htmlFor="phone">Phone:</label>
+        <input type="text" name="phone" value={manager.phone || ''} onChange={handleChange}/>
     <br />
         <button className="button" type="submit">Submit Changes</button>
         </form>
