@@ -66,10 +66,14 @@ const [loading, setLoading] = useState(true);
     }
   };
 
+  function Applications(){
+    navigate('/applicants')
+  }
+
   return (<>
     <h1>{id ? 'Update Job' : 'Create Job'}</h1>
     <div className='container'>
-    <form onSubmit={handleSubmit}>
+    <form >
     <div className="row"><div className="group">
         <label htmlFor="title">Title</label>
         <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} />
@@ -95,7 +99,8 @@ const [loading, setLoading] = useState(true);
         <label htmlFor="listingStatus">Listing Status</label>
         <input type="text" id="listingStatus" name="listingStatus" value={formData.listingStatus} onChange={handleChange} />
     </div></div>
-    <button className="button" type="submit">{id ? 'Update' : 'Create'} Job</button>
+    <button className="button" onClick={handleSubmit}>{id ? 'Update' : 'Create'} Job</button>
+    <button className='button' onClick = {Applications}>View Applicants</button>
     </form>
     </div></>
   );

@@ -4,6 +4,7 @@ const UserApi = 'http://localhost:8080/users';
 const CandidateApi = 'http://localhost:8080/candidates';
 const ManagerApi = 'http://localhost:8080/managers';
 const JobsApi = 'http://localhost:8080/jobs';
+const ApplicationAPi = 'http://localhost:8080/applications';
 
 // Fetch all Users
 export const getUsers = (callback) => {

@@ -11,7 +11,6 @@ export default function ManagerPage() {
           <br/><ul>
           <li><Link to={'/editmprofile'}>Edit Profile</Link><br/></li>
           <li><Link to={'/manager/jobs'}>Manage Job Openings</Link><br/></li>
-          <li><Link to={'/manager/applicants'}>View Applications</Link><br/></li>
           </ul></div>
           <Outlet/>
           </div>
