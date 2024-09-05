@@ -60,7 +60,7 @@ const [loading, setLoading] = useState(true);
             }
         });
       }
-      navigate('/jobs'); // Redirect after submission
+      navigate('/manager/jobs'); // Redirect after submission
     } catch (error) {
       console.log(error);
     }

@@ -9,10 +9,7 @@ export const JobList = ({ jobs, onJobClick }) => {
         }
     };
     const [selectJob, setSelectedJob] = useState([]);
-    const onJobClick = (job) => {
-        setSelectedJob(job);
-        console.log(job.id);
-    };
+    
     return (
         <div className="jobDiv">
             <div className="table-container">

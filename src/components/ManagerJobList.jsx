@@ -1,18 +1,22 @@
 import React,{ useRef, useState } from 'react';
 import './JobList.css';
+import { useNavigate } from 'react-router-dom';
 
-export const ManagerJobList = ({ jobs, onJobClick }) => {
+export const JobList = ({ jobs, onJobClick }) => {
     const jobRef = useRef(null);
+    const navigate = useNavigate();
     const scrollToJob = () => {
         if (jobRef.current) {
             jobRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
     const [selectJob, setSelectedJob] = useState([]);
-    const onJobClick = (job) => {
+    
+    function onJobClick(job){
         setSelectedJob(job);
-        href=`http://localhost:5173/managejobs/${job.id}`
+        navigate(`/managejobs/${job.id}`)
     };
+
     return (
         <div className="jobDiv">
             <div className="table-container">

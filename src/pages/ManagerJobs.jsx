@@ -1,4 +1,4 @@
-import { JobList } from "../components/JobList"
+import { JobList } from "../components/ManagerJobList.jsx"
 import React, { useState, useEffect } from "react";
 import * as API from '../Server.js'
 
@@ -27,7 +27,7 @@ export default function ManagerJobs() {
       <div className="container">
         <div className="Main-Content">
          <div className="Job-List-Container">
-          <ManagerJobList jobs={jobs} onJobClick={jobClick} />
+          <JobList jobs={jobs} onJobClick={jobClick} />
          </div>
          <a href="http://localhost:5173/managejobs/new"><button>Add Job</button></a>
          </div>
