@@ -34,7 +34,8 @@ const App = () => {
         <Route path="/editcprofile" element={<CandidateProfile />} />
         <Route path="/manager" element={<ManagerPage />} />
         <Route path="/editmprofile" element={<ManagerProfile />} />
-        <Route path="/managejobs" element={<ManageJobs/>}/>
+        <Route path="/managejobs/new" element={<ManageJobs/>}/>
+        <Route path="/managejobs/:id" element={<ManageJobs/>}/>
       </Routes>
     </Router>
   );
