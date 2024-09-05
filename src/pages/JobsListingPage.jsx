@@ -36,48 +36,6 @@ const JobsListingPage = () => {
     setSelectedJob(job);
   };
 
-  const clearClick = () => {
-    setSelectedJob(emptyJob);
-  };
-
-  const destroyJob = () => {
-    if (selectedJob.id !== -1) {
-      jobCrud.deleteJob(selectedJob.id, (err) => {
-        if (err) {
-          setError('Error deleting job.');
-          console.error(err);
-        } else {
-          setSelectedJob(emptyJob);
-          pullAllJobs(); 
-        }
-      });
-    }
-  };
-
-  const saveJob = (job) => {
-    jobCrud.updateJob(job.id, job, (err, result) => {
-      if (err) {
-        setError('Error updating job.');
-        console.error(err);
-      } else {
-        setSelectedJob(emptyJob);
-        pullAllJobs(); 
-      }
-    });
-  };
-
-  const addJob = (job) => {
-    jobCrud.createJob(job, (err) => {
-      if (err) {
-        setError('Error creating job.');
-        console.error(err);
-      } else {
-        setSelectedJob(emptyJob);
-        pullAllJobs(); 
-      }
-    });
-  };
-
   const pullAllJobs = () => {
     setLoading(true);
     jobCrud.getJobs((err, fetchedJobs) => {
@@ -122,11 +80,7 @@ const JobsListingPage = () => {
       <div className="main-content">
         <div className="job-description-container">
           <JobDescription 
-            job={selectedJob} 
-            onClearClick={clearClick}
-            onDeleteClick={destroyJob}
-            onSaveClick={saveJob}
-            onAddClick={addJob}
+            job={selectedJob}
           />
         </div>
         <div className="job-list-container">
