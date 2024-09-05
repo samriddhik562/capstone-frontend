@@ -1,5 +1,5 @@
 import React,{ useRef } from 'react';
-//import './JobList.css';
+import './JobList.css';
 
 export const JobList = ({ jobs, onJobsClick }) => {
     const jobRef = useRef(null);

@@ -1,0 +1,61 @@
+/* JobList.css */
+
+/* Container for the job list */
+.jobDiv {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Table container */
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  /* Table header styling */
+  .table-header table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-header th {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+  }
+  
+  /* Table body styling */
+  .table-body table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-body td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .table-body td:hover {
+    background-color: #e9ecef;
+  }
+  
+  .table-body tr:first-child {
+    border-top: 2px solid #007bff;
+  }
+  
+  .table-body tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .table-body tr:nth-child(even) {
+    background-color: #fff;
+  }
+
+  

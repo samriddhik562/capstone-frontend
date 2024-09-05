@@ -1,4 +1,5 @@
 import React from 'react';
+import './JobDescription.css'
 
 export const JobDescription = ({ job, onApplyClick, onWithdrawClick, application, user }) => {
     if (!job) {

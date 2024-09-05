@@ -1,0 +1,61 @@
+/* JobDescription.css */
+
+/* Container for the job description */
+.Job-Description-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styling */
+  .Job-Description-container h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Label styling */
+  .Job-Description-container label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #555;
+  }
+  
+  /* Paragraph styling for job details */
+  .Job-Description-container p {
+    margin: 5px 0 15px;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Button group styling */
+  .button-group {
+    margin-top: 20px;
+  }
+  
+  /* Button styling */
+  .button-group button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-group button:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-group button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
