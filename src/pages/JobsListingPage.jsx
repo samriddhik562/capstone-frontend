@@ -1,28 +1,140 @@
-import { JobList } from "../components/JobList"
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import { JobList } from '../components/JobList';
+import { JobDescription } from '../components/JobDescription';
+import './JobsListingPage.css'; 
+import * as jobCrud from '../Server.js'; // Import all CRUD functions
 
-export default function JobsListingPage() {
+const emptyJob = {
+  id: -1,
+  listingTitle: "",
+  description: "",
+  additionalInformation: "",
+  department: "",
+  title: "",
+  dateListed: "",
+  dateClosed: "",
+  listingStatus: "",
+};
+
+const JobsListingPage = () => {
+  const [selectedJob, setSelectedJob] = useState(emptyJob);
   const [jobs, setJobs] = useState([]);
+  const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(false);
+  const [filteredJobs, setFilteredJobs] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    pullAllJobs();
+  }, []);
+
+  useEffect(() => {
+    filterJobs();
+  }, [searchQuery, jobs]);
+
   const jobClick = (job) => {
     setSelectedJob(job);
   };
-    return (
-      <div className="Job-Listing-Container">
-        < div className="Jobs-Listing-Header" >
-          <h1> Jobs </h1>
-          <p> View and apply for jobs of your choice </p>
-        </div>
-        <div className="Search-bar">
 
-        </div>
-        <div className="Main-Content">
-         <div className="Job-List-Container">
-          <JobList jobs={jobs} onJobClick={jobClick} />
-         </div>
-         <div className="Job-Description-Container">
+  const clearClick = () => {
+    setSelectedJob(emptyJob);
+  };
 
-         </div>
+  const destroyJob = () => {
+    if (selectedJob.id !== -1) {
+      jobCrud.deleteJob(selectedJob.id, (err) => {
+        if (err) {
+          setError('Error deleting job.');
+          console.error(err);
+        } else {
+          setSelectedJob(emptyJob);
+          pullAllJobs(); 
+        }
+      });
+    }
+  };
+
+  const saveJob = (job) => {
+    jobCrud.updateJob(job.id, job, (err, result) => {
+      if (err) {
+        setError('Error updating job.');
+        console.error(err);
+      } else {
+        setSelectedJob(emptyJob);
+        pullAllJobs(); 
+      }
+    });
+  };
+
+  const addJob = (job) => {
+    jobCrud.createJob(job, (err) => {
+      if (err) {
+        setError('Error creating job.');
+        console.error(err);
+      } else {
+        setSelectedJob(emptyJob);
+        pullAllJobs(); 
+      }
+    });
+  };
+
+  const pullAllJobs = () => {
+    setLoading(true);
+    jobCrud.getJobs((err, fetchedJobs) => {
+      setLoading(false);
+      if (err) {
+        setError('Database Error');
+        console.error(err);
+      } else {
+        setJobs(fetchedJobs);
+      }
+    });
+  };
+
+  const filterJobs = () => {
+    const query = searchQuery.toLowerCase();
+    const filtered = jobs.filter(job =>
+      (job.listingTitle || "").toLowerCase().includes(query) ||
+      (job.department || "").toLowerCase().includes(query)
+    );
+    setFilteredJobs(filtered);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  return (
+    <div className="jobs-listing-container">
+      <div className="jobs-listing-header">
+        <h1>Job Listings</h1>
+      </div>
+      {error && <p className="error">{error}</p>}
+      <div className="search-bar">
+        <input
+         type="text"
+         placeholder="Search Jobs..."
+         value={searchQuery}
+         onChange={handleSearchChange}
+         />
+      </div>
+      {loading && <p className="loading">Loading...</p>}
+      <div className="main-content">
+        <div className="job-description-container">
+          <JobDescription 
+            job={selectedJob} 
+            onClearClick={clearClick}
+            onDeleteClick={destroyJob}
+            onSaveClick={saveJob}
+            onAddClick={addJob}
+          />
         </div>
-      </div>  
-    )
+        <div className="job-list-container">
+          <JobList jobs={filteredJobs} onJobClick={jobClick} />
+        </div>
+      </div>
+    </div>
+  );
 };
+
+export default JobsListingPage;
