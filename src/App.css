@@ -98,3 +98,7 @@ label {
   display: block;
   margin-bottom: 5px;
 }
+
+.flex-box{
+  display: flex;
+}

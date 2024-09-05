@@ -16,6 +16,7 @@ import JobsListingPage from './pages/JobsListingPage'
 import CandidateProfile from './pages/CandidateProfile';
 import ManagerProfile from './pages/ManagerProfile';
 import ManageJobs from './pages/ManageJobs';
+import ManagerJobs from './pages/ManagerJobs';
 
 const App = () => {
   return (
@@ -32,7 +33,9 @@ const App = () => {
         <Route path="/usermanagement" element={<UserManagement />} />
         <Route path="/candidate" element={<CandidatePage />} />
         <Route path="/editcprofile" element={<CandidateProfile />} />
-        <Route path="/manager" element={<ManagerPage />} />
+        <Route path="/manager" element={<ManagerPage />}>
+            <Route path="/manager/jobs" element={<ManagerJobs/>}/>
+        </Route>
         <Route path="/editmprofile" element={<ManagerProfile />} />
         <Route path="/managejobs/new" element={<ManageJobs/>}/>
         <Route path="/managejobs/:id" element={<ManageJobs/>}/>
