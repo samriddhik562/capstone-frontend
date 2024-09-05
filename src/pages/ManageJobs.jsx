@@ -7,13 +7,13 @@ const ManageJobs = () => {
 const { id } = useParams();
 const navigate = useNavigate();
 const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    department: '',
-    dateListed: '',
-    dateClosed: '',
-    additionalInfo: '',
-    listingStatus: ''
+    title: ' ',
+    description: ' ',
+    department: ' ',
+    dateListed: ' ',
+    dateClosed: ' ',
+    additionalInfo: ' ',
+    listingStatus: ' '
   });
 const [loading, setLoading] = useState(true);
 
@@ -44,10 +44,21 @@ const [loading, setLoading] = useState(true);
     try {
       if (id) {
         // Update job
-        API.updateJob(id, formData)
+        API.updateJob(id, formData, (err) => {
+            if (err) {
+            console.error('Failed to update job:', err);
+            } else {
+            console.log('Job updated successfully');
+            }});
       } else {
         // Create new job
-        API.createJob(2, formData);
+        API.createJob(2, formData, (err) => {
+            if(err){
+                console.error('Failed to add job: ', err);
+            }else{
+                console.log('Job Added successfully');
+            }
+        });
       }
       navigate('/jobs'); // Redirect after submission
     } catch (error) {
