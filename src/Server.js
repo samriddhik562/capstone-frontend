@@ -109,6 +109,13 @@ export const createUser = (username, type, callback) => {
         .catch(error => callback(error));
 };
 
+// Create a new Application
+export const createApplication = (data, callback) => {
+    axios.post(ApplicationApi, data)
+        .then(response => callback(null, response.data))
+        .catch(error => callback(error));
+};
+
 // Register a new user
 export const registerUser = async ({id, username, password, type, callback}) => {
     const newUser = await fetch(UserApi, {method:"POST", mode: "cors", body:JSON.stringify({username,password,type}), headers: {"Content-Type":"application/json"}}, ).then((res) => res.json())

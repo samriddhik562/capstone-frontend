@@ -1,0 +1,52 @@
+/* Ensure the form container fills the available space and centers its content */
+.job-application-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center;     /* Center content horizontally */
+    height: 100vh;           /* Full viewport height */
+    padding: 20px;           /* Padding around the form */
+    box-sizing: border-box;
+}
+
+/* Ensure the form takes up 80% of the viewport height */
+.job-application-form {
+    width: 100%;
+    max-width: 600px;        /* Set a maximum width for the form */
+    height: 80vh;           /* 80% of the viewport height */
+    background-color: #f9f9f9; /* Light background color for contrast */
+    border: 1px solid #ddd; /* Light border for definition */
+    border-radius: 8px;     /* Rounded corners */
+    padding: 20px;          /* Padding inside the form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for a subtle lift effect */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Style form elements for better appearance */
+.job-application-form input,
+.job-application-form textarea,
+.job-application-form button {
+    width: 100%;
+    margin-bottom: 15px; /* Space between form elements */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.job-application-form button {
+    background-color: #007bff; /* Primary button color */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.job-application-form button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.job-application-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
