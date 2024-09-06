@@ -18,6 +18,7 @@ import ManagerProfile from './pages/ManagerProfile';
 import ManageJobs from './pages/ManageJobs';
 import ManagerJobs from './pages/ManagerJobs';
 import ApplicantList from './components/ApplicantList';
+import ApplicationPage from './pages/ApplicationPage'
 
 const App = () => {
   return (
@@ -41,6 +42,7 @@ const App = () => {
         <Route path="/editmprofile" element={<ManagerProfile />} />
         <Route path="/managejobs/new" element={<ManageJobs/>}/>
         <Route path="/managejobs/:id" element={<ManageJobs/>}/>
+        <Route path="apply-job/:id" element={<ApplicationPage/>}/>
       </Routes>
     </Router>
   );

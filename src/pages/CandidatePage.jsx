@@ -10,6 +10,7 @@ export default function CandidatePage() {
           <br/><ul>
           <li><Link to={'/editcprofile'} >Edit Profile</Link><br/></li>
           <li><Link to={'/jobs'} >Apply to Job</Link><br/></li>
+          <li><Link to={'/jobs'} >View Applications</Link><br/></li>
           </ul></div>
       </div>
     )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createApplication } from '../Server.js'; 
+import { useNavigate } from 'react-router-dom';
 
 const JobApplicationForm = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +10,7 @@ const JobApplicationForm = () => {
     customResume: '',
     applicationStatus: ''
   });
-  
+  const navigate = useNavigate()
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
@@ -25,6 +26,7 @@ const JobApplicationForm = () => {
     e.preventDefault();
     createApplication(formData, (err, response) => {
       if (err) {
+        navigate('/candidate')
         console.error('Error submitting form:', err);
         setError('Failed to submit the form. Please try again.');
         setSuccess(false);
@@ -32,6 +34,7 @@ const JobApplicationForm = () => {
         console.log('Form Data Submitted:', response);
         setSuccess(true);
         setError(null);
+        navigate('/candidate')
       }
     });
   };
