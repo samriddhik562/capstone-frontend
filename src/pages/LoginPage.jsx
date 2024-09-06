@@ -1,62 +1,68 @@
 import React, { useState } from 'react';
-import '../components/UpdateUser'; // Import if needed
-import * as userCrud from '../Server.js'; // Import all CRUD functions
+import { useNavigate } from 'react-router-dom';
+import App from '../App'
 
-const LoginPage = ({ onLoginClick }) => {
-    const [user, setUser] = useState({ username: '', password: '' });
 
-    const handleInputChange = (event) => {
-        const name = event.target.name;
-        const value = event.target.value;
-        setUser({ ...user, [name]: value });
+const LoginPage = ({ onLogin }) => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onLogin(username, password, (error, user) => {
+            if (error) {
+                setError('Invalid credentials');
+                console.error('Login error:', error); // Log the error for debugging
+            } else {
+                console.log('Received user:', user); // Log the user object for debugging
+    
+                if (user && user.type) {
+                    switch (user.type) {
+                        case 'Administrator':
+                            navigate('/admin');
+                            break;
+                        case 'Hiring_Manager':
+                            navigate('/manager');
+                            break;
+                        case 'Candidate':
+                            navigate('/candidate');
+                            break;
+                        default:
+                            navigate('/home');
+                            break;
+                    }
+                } else {
+                    setError('Unexpected response from server');
+                    console.error('Unexpected user object:', user); // Log the unexpected user object
+                }
+            }
+        });
     };
-
-    const onClearClick = () => {
-        setUser({ username: '', password: '' });
-    };
-
+    
     return (
-        <div className='container'>
+        <div className="container">
             <h1>Sign In</h1>
-            <form>
+            {error && <p className="error">{error}</p>}
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="usernameInput">Username:</label>
                 <input
                     type="text"
-                    name="username"
                     id="usernameInput"
-                    onChange={handleInputChange}
-                    value={user.username}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                 />
                 <br />
                 <label htmlFor="password">Password:</label>
                 <input
                     type="password"
-                    name="password"
                     id="password"
-                    onChange={handleInputChange}
-                    value={user.password}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
                 <br />
-                <div>
-                    <button
-                        type="button"
-                        onClick={(event) => {
-                            event.preventDefault();
-                            onLoginClick(user);
-                        }}
-                    >
-                        Login
-                    </button>
-                    <button
-                        type="button"
-                        onClick={(event) => {
-                            event.preventDefault();
-                            onClearClick();
-                        }}
-                    >
-                        Clear
-                    </button>
-                </div>
+                <button type="submit">Login</button>
             </form>
         </div>
     );

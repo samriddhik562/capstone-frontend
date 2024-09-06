@@ -4,6 +4,7 @@ const UserApi = 'http://localhost:8080/users';
 const CandidateApi = 'http://localhost:8080/candidates';
 const ManagerApi = 'http://localhost:8080/managers';
 const JobsApi = 'http://localhost:8080/jobs';
+const LoginApi = 'http://localhost:8080/users/login';
 const ApplicationAPi = 'http://localhost:8080/applications';
 
 // Fetch all Users
@@ -122,4 +123,28 @@ export const registerUser = async ({id, username, password, type, callback}) => 
         fetch(ManagerApi, {method:"POST", mode: "cors", body:JSON.stringify({userId: newUser.id}), headers: {"Content-Type":"application/json"}}, )
         console.log("successful manager")
     }
+};
+
+export const loginUser = (username, password, callback) => {
+    if (typeof callback !== 'function') throw new TypeError('Callback must be a function');
+    
+    // Perform the POST request with the username and password
+    axios.post(LoginApi, { username, password })
+        .then(response => {
+            const user = response.data;
+
+            // Check if the response contains necessary fields
+            if (user && user.type) {
+                // Call the callback with no error and the user data
+                callback(null, user);
+                console.log('User type:', user.type); // Debugging line
+            } else {
+                // Call the callback with an error if the response is not as expected
+                callback(new Error('Invalid response from server'));
+            }
+        })
+        .catch(error => {
+            // Call the callback with the error from the request
+            callback(error);
+        });
 };
